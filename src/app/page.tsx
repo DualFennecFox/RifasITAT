@@ -43,7 +43,7 @@ export default function Page() {
     <div className="self-center w-[1280] p-5 pb-0">
       <div className="flex flex-row items-center h-[600] w-full h-fill">
         <div className="w-1/2 flex justify-center items-center relative">
-          <Image className="select-none" src="/sorteo.jpg" height={430} width={430} style={{
+          <Image className="select-none" src="/sorteo.png" height={430} width={430} style={{
             objectFit: 'contain',
             padding: 10,
           }} alt="Sorteo ITAT" />
