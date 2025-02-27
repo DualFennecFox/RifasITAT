@@ -18,6 +18,7 @@ export default function RoulettePage({ winningNumbers, rouletteCallback }: {
     const [showText, setShowText] = useState(false)
     const [data] = useState<WheelData[]>([])
     const [toShow] = useState<JSX.Element[]>([])
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [render, setRender] = useState(false)
 
     const generateRandomColor = () => {
