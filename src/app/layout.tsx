@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Rifas ITAT",
-  description: "Rifas mega sorteo",
+  description: "Mega sorteo",
 };
 
 export default function RootLayout({
@@ -26,7 +26,7 @@ export default function RootLayout({
   return (
     <html lang="es" className="dark">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased min-w-fit`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Header />
         <div className="flex align-center justify-center">

@@ -1,9 +1,8 @@
 "use client"
 import BuyModal from "@/components/BuyModal";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import PercentageBar from "@/components/PercentageBar";
-
 interface DollarJSON {
   fuente: string,
   nombre: string,
@@ -17,10 +16,28 @@ export default function Page() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [dollar, setDollar] = useState<DollarJSON | null>(null)
   const [available, setAvailable] = useState<{ max: number, available: number } | null>(null)
+  const [isSmallScreen, setIsSmallScreen] = useState(false)
 
-  function toggleModal() {
+  const toggleModal = useCallback(() => {
     setIsModalOpen(!isModalOpen)
-  }
+  }, [isModalOpen])
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(min-width: 640px)'); // Tailwind's sm breakpoint
+
+    const handleMediaChange = (e: MediaQueryListEvent | MediaQueryList) => {
+      setIsSmallScreen(e.matches);
+    };
+
+    // Initial check
+    handleMediaChange(mediaQuery);
+
+    // Listen for changes
+    mediaQuery.addEventListener("change", handleMediaChange);
+
+    // Cleanup listener on unmount
+    return () => mediaQuery.removeEventListener("change", handleMediaChange);
+  }, []);
+
   useEffect(() => {
     async function fetchDollar() {
       const res = await fetch("https://ve.dolarapi.com/v1/dolares/paralelo")
@@ -40,18 +57,24 @@ export default function Page() {
   }, [])
 
   return (
-    <div className="self-center w-[1280] p-5 pb-0">
-      <div className="flex flex-row items-center h-[600] w-full h-fill">
-        <div className="w-1/2 flex justify-center items-center relative">
+    <div className="self-center max-w-[1280] sm:p-5 sm:pt-0 pb-0 ">
+      <div className="flex flex-col sm:flex-row items-center py-5 sm:py-0 h-fill w-full ">
+        {isSmallScreen ? <div className={`w-auto sm:w-1/2 justify-center items-center relative ${isModalOpen ? "hidden sm:flex" : "flex"}`}>
           <Image className="select-none" src="/sorteo.png" height={430} width={430} style={{
             objectFit: 'contain',
             padding: 10,
           }} alt="Sorteo ITAT" />
-        </div>
-        <div className="w-1/2 flex flex-col items-center h-full p-10">
+        </div> : <></>}
+        <div className={`w-auto sm:w-1/2 flex-col items-center p-5  ${isModalOpen ? "hidden sm:flex" : "flex"}`}>
           <div className="pb-10">
             <h1 className="text-5xl text-center font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#D68A4E] from-40% to-[#FAE6A9] ">Gran Rifa</h1>
             <h2 className="text-3xl text-center text-blue-400">Promo 26</h2>
+            {!isSmallScreen ? <div className={`w-auto sm:w-1/2 justify-center items-center relative ${isModalOpen ? "hidden modal-hid" : "flex"}`}>
+              <Image className="select-none" src="/sorteo.png" height={430} width={430} style={{
+                objectFit: 'contain',
+                padding: 10,
+              }} alt="Sorteo ITAT" />
+            </div> : <></>}
           </div>
           <div className="pb-5 text-justify">
             <p className="text-xl">Ten la oportunidad de ganar una <span className="text-cyan-400">Playstation 5</span> por el precio de
@@ -64,7 +87,7 @@ export default function Page() {
               Ir a la compra
             </div>
           </button>
-          <PercentageBar data={available}/>
+          <PercentageBar data={available} />
         </div>
         {isModalOpen ? <BuyModal toggleModal={toggleModal} dollar={dollar?.promedio} available={available?.available} /> : null}
       </div>
