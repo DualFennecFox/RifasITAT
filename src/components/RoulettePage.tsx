@@ -18,7 +18,6 @@ export default function RoulettePage({ winningNumbers, rouletteCallback }: {
     const [showText, setShowText] = useState(false)
     const [data] = useState<WheelData[]>([])
     const [toShow] = useState<JSX.Element[]>([])
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [render, setRender] = useState(false)
 
     const generateRandomColor = () => {
@@ -37,7 +36,7 @@ export default function RoulettePage({ winningNumbers, rouletteCallback }: {
 
             data.push({ option: (Math.floor(Math.random() * 1000) + 100).toString(), style: { backgroundColor: generateRandomColor(), textColor: "black" } })
         }
-        setRender(prev => !prev)
+        setRender(!render)
     }, [data, winningNumbers])
 
 
