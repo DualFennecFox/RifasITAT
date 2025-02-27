@@ -40,7 +40,7 @@ export default function BuyModal({ toggleModal, dollar, available }: {
         formData.append("file", file);
 
         console.log(formDataToString(formData))
-        const res = await fetch(`http://143.198.244.32:8081/api/number?numamount=${totalNumbers}`, {
+        const res = await fetch(`/api/number?numamount=${totalNumbers}`, {
             method: "POST",
             body: formData
         })

@@ -32,7 +32,7 @@ export default function Page() {
 
   useEffect(() => {
     async function fetchAvailable() {
-      const res = await fetch('http://143.198.244.32:8081/api/raffle/available?id=1')
+      const res = await fetch('/api/raffle/available?id=1')
       const data = await res.json();
       setAvailable(data)
     }
