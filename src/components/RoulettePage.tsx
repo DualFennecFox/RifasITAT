@@ -18,6 +18,7 @@ export default function RoulettePage({ winningNumbers, rouletteCallback }: {
     const [showText, setShowText] = useState(false)
     const [data] = useState<WheelData[]>([])
     const [toShow] = useState<JSX.Element[]>([])
+    const [render, setRender] = useState(false)
 
     const generateRandomColor = () => {
         const randomValue = () => Math.floor(Math.random() * 128) + 128; // Generate a number between 128 and 255
@@ -35,6 +36,7 @@ export default function RoulettePage({ winningNumbers, rouletteCallback }: {
 
             data.push({ option: (Math.floor(Math.random() * 1000) + 100).toString(), style: { backgroundColor: generateRandomColor(), textColor: "black" } })
         }
+        setRender(!render)
     }, [data, winningNumbers])
 
 
@@ -68,7 +70,7 @@ export default function RoulettePage({ winningNumbers, rouletteCallback }: {
         }, winningNumbers.length > 1 ? 2000 : 3000);
     }, [rouletteCallback, winningNumbers, prizeNumber, toShow])
 
-    return winningNumbers[0] != null ? (
+    return data[0] != null ? (
         <div className="relative select-none h-full flex items-center justify-center">
             <div className="z-0">
                 <button onClick={handleSpinClick}>
