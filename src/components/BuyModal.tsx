@@ -39,10 +39,11 @@ export default function BuyModal({ toggleModal, dollar, available }: {
         formData.append("number", "0");
         formData.append("accountid", "1")
         formData.append("raffleid", "1")
-
         if (file == null) return
+        formData.append("file", file)
+        
         setIsSubmitting(true)
-        setTimeout(() => {
+        setTimeout(async () => {
             setIsSubmitting(false)
         }, 10000);
         console.log(formDataToString(formData))
