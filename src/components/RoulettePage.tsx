@@ -68,7 +68,7 @@ export default function RoulettePage({ winningNumbers, rouletteCallback }: {
         }, winningNumbers.length > 1 ? 2000 : 3000);
     }, [rouletteCallback, winningNumbers, prizeNumber, toShow])
 
-    return data[0] != null ? (
+    return winningNumbers[0] != null ? (
         <div className="relative select-none h-full flex items-center justify-center">
             <div className="z-0">
                 <button onClick={handleSpinClick}>
