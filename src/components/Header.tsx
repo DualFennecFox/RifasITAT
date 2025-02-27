@@ -16,7 +16,7 @@ export default function Header() {
                 <PathLinks />
             </div>
 
-            <div className="flex flex-row justify-end p-5 px-10 gap-20 relative items-center  text-nowrap">
+            {/*<div className="flex flex-row justify-end p-5 px-10 gap-20 relative items-center  text-nowrap">
                 <div className="flex flex-row gap-5">
                     <Link href="/signup" >
                         <div className="flex justify-center rounded-md bg-white px-5 py-1.5 text-xl/10 font-semibold text-blue-500 shadow-xs hover:bg-blue-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 select-none">
@@ -29,14 +29,14 @@ export default function Header() {
                         </div>
                     </Link>
                 </div> 
-                {/*<Link href="/account">   
+                /*<Link href="/account">   
                     <div className="flex flex-row gap-3">
                         Cuenta
                         <Image src="/account.svg" height={300} width={25} alt="Usuario" />
                     </div>
-                </Link>*/}
+                </Link>
 
-            </div>
+            </div>*/}
         </div>
     )
 }
