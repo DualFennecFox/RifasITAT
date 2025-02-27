@@ -90,7 +90,7 @@ export default function RoulettePage({ winningNumbers, rouletteCallback }: {
                 <div className="absolute w-full text-center flex flex-col items-center justify-center left-0">
                     {winningNumbers.length - prizeNumber > 0 ? <h1 className="text-2xl">Te {(winningNumbers.length) - prizeNumber > 1 ? "quedan" : "queda"} {(winningNumbers.length) - prizeNumber} {(winningNumbers.length) - prizeNumber > 1 ? "giros" : "giro"}</h1> : <></>}
                     <h1 className="text-2xl text-gray-400">Podrás ver estos números en tu correo</h1>
-                    <div className="flex flex-row items-center justify-center gap-2">
+                    <div className="flex flex-row items-center justify-center gap-2 flex-wrap">
                         {toShow}
                     </div>
                 </div>
