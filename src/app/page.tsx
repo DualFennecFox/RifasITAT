@@ -3,18 +3,11 @@ import BuyModal from "@/components/BuyModal";
 import Image from "next/image";
 import { useCallback, useEffect, useState } from "react";
 import PercentageBar from "@/components/PercentageBar";
-interface DollarJSON {
-  fuente: string,
-  nombre: string,
-  compra: number,
-  venta: number,
-  promedio: number,
-  fechaActualizacion: string
-}
+
 
 export default function Page() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [dollar, setDollar] = useState<DollarJSON | null>(null)
+  const [dollar, setDollar] = useState<number>(0)
   const [available, setAvailable] = useState<{ max: number, available: number } | null>(null)
   const [isSmallScreen, setIsSmallScreen] = useState(false)
 
@@ -40,9 +33,9 @@ export default function Page() {
 
   useEffect(() => {
     async function fetchDollar() {
-      const res = await fetch("https://ve.dolarapi.com/v1/dolares/paralelo")
+      const res = await fetch("https://ve.dolarapi.com/v1/dolares")
       const data = await res.json();
-      setDollar(data)
+      setDollar((data[0].promedio + data[1].promedio) / 2)
     }
     fetchDollar();
   }, [])
@@ -89,7 +82,7 @@ export default function Page() {
           </button>
           <PercentageBar data={available} />
         </div>
-        {isModalOpen ? <BuyModal toggleModal={toggleModal} dollar={dollar?.promedio} available={available?.available} /> : null}
+        {isModalOpen ? <BuyModal toggleModal={toggleModal} dollar={dollar} available={available?.available} /> : null}
       </div>
     </div>
   );

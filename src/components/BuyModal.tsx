@@ -132,7 +132,7 @@ export default function BuyModal({ toggleModal, dollar, available }: {
                                                 Pago Móvil
                                             </h1>
                                             <p>Teléfono: 0424-1184252</p>
-                                            <p>Cédula: 1030898</p>
+                                            <p>Cédula: 10330898</p>
                                             <p>Banco de Venezuela</p>
                                             <p>Total a pagar: <span className=" font-bold bg-red-800 p-1 rounded-lg">
                                                 {(((dollar ?? 0) * 2) * totalNumbers).toFixed(2)}Bs = {totalNumbers * 2}$
@@ -150,7 +150,7 @@ export default function BuyModal({ toggleModal, dollar, available }: {
                                         </button>
                                     </div>
                                     <p className="pb-3 text-center text-mg/6 text-gray-400">
-                                        Precios a tasa actual en dólar paralelo<br /> 1$ = {dollar}Bs
+                                        Precios a tasa actual en dólar promedio<br /> 1$ = {dollar?.toFixed(2)}Bs
                                     </p>
                                 </div>
                                 <div className="w-full px-10 pt-0  mt-3 sm:mx-auto sm:w-full sm:max-w-sm">
