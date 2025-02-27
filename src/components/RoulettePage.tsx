@@ -36,7 +36,7 @@ export default function RoulettePage({ winningNumbers, rouletteCallback }: {
 
             data.push({ option: (Math.floor(Math.random() * 1000) + 100).toString(), style: { backgroundColor: generateRandomColor(), textColor: "black" } })
         }
-        setRender(!render)
+        setRender(prev => !prev)
     }, [data, winningNumbers])
 
 
