@@ -10,7 +10,7 @@ export default function PercentageBar({ data }: {
         <div className="w-[100%] flex flex-row gap-2 overflow-hidden mt-10">
             <div className="size-full rounded-full border-white border-2 overflow-hidden">
                 <div style={{ width: percentage.toString() + "%" }} className="h-full bg-blue-600 rounded-full flex items-center justify-center">
-                    <h1 className="text-center font-bold">{data && percentage >= 10 ? percentage.toString() + "%" : '100%'}
+                    <h1 className="text-center font-bold">{data && percentage >= 10 ? percentage.toString() + "%" : ''}
                     </h1>
                 </div>
             </div>
