@@ -39,10 +39,10 @@ export default function RoulettePage({ winningNumbers, rouletteCallback }: {
 
 
     const handleSpinClick = useCallback(() => {
-        if (!mustSpin) {
+        if (!mustSpin && winningNumbers[prizeNumber] != null) {
             setMustSpin(true);
         }
-    }, [mustSpin])
+    }, [mustSpin, prizeNumber, winningNumbers])
 
     const onStopSpinning = useCallback(() => {
         setShowText(true)
