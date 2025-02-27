@@ -96,7 +96,7 @@ export default function RoulettePage({ winningNumbers, rouletteCallback }: {
             {showText || winningNumbers.length - prizeNumber == 0 ? <div className="absolute size-auto first-line:flex items-center justify-center bg-black opacity-50 rounded-full" /> : <></>}
             {showText ? <div className="absolute size-full flex items-center justify-center">
                 <div className="absolute bg-black p-[100] rounded-full" />
-                <SparkWrapper className="sparkly-text text-8xl font-bold text-center z-10">{data[prizeNumber].option}</SparkWrapper>
+                <SparkWrapper className="sparkly-text text-8xl bg-black p-5 font-bold text-center z-10">{data[prizeNumber].option}</SparkWrapper>
             </div> : <></>}
         </div>
     ) : <></>
