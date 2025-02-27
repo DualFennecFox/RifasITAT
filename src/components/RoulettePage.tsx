@@ -69,7 +69,7 @@ export default function RoulettePage({ winningNumbers, rouletteCallback }: {
     }, [rouletteCallback, winningNumbers, prizeNumber, toShow])
 
     return data[0] != null ? (
-        <div className="relative select-none mb-[100] flex items-center justify-center">
+        <div className="relative select-none h-full flex items-center justify-center overflow-hidden">
             <div className="z-0">
                 <button onClick={handleSpinClick}>
                     <Wheel
@@ -85,7 +85,7 @@ export default function RoulettePage({ winningNumbers, rouletteCallback }: {
                         }}
                     />
                 </button>
-                <div className="absolute w-full flex flex-col items-center justify-center">
+                <div className="absolute w-full text-center flex flex-col items-center justify-center left-0">
                     {winningNumbers.length - prizeNumber > 0 ? <h1 className="text-2xl">Te {(winningNumbers.length) - prizeNumber > 1 ? "quedan" : "queda"} {(winningNumbers.length) - prizeNumber} {(winningNumbers.length) - prizeNumber > 1 ? "giros" : "giro"}</h1> : <></>}
                     <h1 className="text-2xl text-gray-400">Podrás ver estos números en tu correo</h1>
                     <div className="flex flex-row items-center justify-center gap-2">
@@ -93,7 +93,7 @@ export default function RoulettePage({ winningNumbers, rouletteCallback }: {
                     </div>
                 </div>
             </div>
-            {showText || winningNumbers.length - prizeNumber == 0 ? <div className="absolute size-full first-line:flex items-center justify-center bg-black opacity-50 rounded-full" /> : <></>}
+            {showText || winningNumbers.length - prizeNumber == 0 ? <div className="absolute size-auto first-line:flex items-center justify-center bg-black opacity-50 rounded-full" /> : <></>}
             {showText ? <div className="absolute size-full flex items-center justify-center">
                 <div className="absolute bg-black p-[100] rounded-full" />
                 <SparkWrapper className="sparkly-text text-8xl font-bold text-center z-10">{data[prizeNumber].option}</SparkWrapper>
