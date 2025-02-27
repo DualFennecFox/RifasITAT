@@ -68,7 +68,7 @@ export default function RoulettePage({ winningNumbers, rouletteCallback }: {
         }, winningNumbers.length > 1 ? 2000 : 3000);
     }, [rouletteCallback, winningNumbers, prizeNumber, toShow])
 
-    return (
+    return data[0] != null ? (
         <div className="relative select-none mb-[100] flex items-center justify-center">
             <div className="z-0">
                 <button onClick={handleSpinClick}>
@@ -99,5 +99,5 @@ export default function RoulettePage({ winningNumbers, rouletteCallback }: {
                 <SparkWrapper className="sparkly-text text-8xl font-bold text-center z-10">{data[prizeNumber].option}</SparkWrapper>
             </div> : <></>}
         </div>
-    )
+    ) : <></>
 }

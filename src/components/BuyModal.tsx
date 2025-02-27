@@ -23,6 +23,7 @@ export default function BuyModal({ toggleModal, dollar, available }: {
         toggleModal()
     }, [toggleModal])
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     function formDataToString(formData: FormData) {
         const entries = formData.entries();
         let str = '';
@@ -41,20 +42,19 @@ export default function BuyModal({ toggleModal, dollar, available }: {
         formData.append("raffleid", "1")
         if (file == null) return
         formData.append("file", file)
-        
+
         setIsSubmitting(true)
         setTimeout(async () => {
             setIsSubmitting(false)
         }, 10000);
-        console.log(formDataToString(formData))
-        const res = await fetch(`/api/number?numamount=${totalNumbers}`, {
+
+        const res = await fetch(`https://rifasitat.duckdns.org/api/number?numamount=${totalNumbers}`, {
             method: "POST",
             body: formData
         })
         formRef.current?.reset()
         const data = await res.json()
 
-        console.log(data)
         const numbers: number[] = []
         data.forEach((data: { number: number }) => {
             numbers.push(data.number)
@@ -65,7 +65,6 @@ export default function BuyModal({ toggleModal, dollar, available }: {
     }, [file, showRoulette, totalNumbers])
 
     const onSelectChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
-        console.log(available)
         let num = parseInt(event.target.value)
         num = num <= 0 ? num * -1 : num
         num = num >= max ? max : num
