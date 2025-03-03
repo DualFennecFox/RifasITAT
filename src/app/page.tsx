@@ -33,9 +33,25 @@ export default function Page() {
 
   useEffect(() => {
     async function fetchDollar() {
-      const res = await fetch("https://ve.dolarapi.com/v1/dolares")
-      const data = await res.json();
-      setDollar((data[0].promedio + data[1].promedio) / 2)
+      /*
+      const res = await fetch('https://ve.dolarapi.com/v1/dolares', {
+        method: 'GET',
+        headers: {
+          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)',
+          'Accept': 'application/json'
+        }
+      })
+        */
+      const res = await fetch('https://pydolarve.org/api/v1/dollar?format_date=default&rounded_price=true', {
+        method: 'GET',
+        headers: {
+          'Accept': 'application/json'
+        }
+      })
+      
+      const data = await res.json()
+      console.log(data)
+      setDollar((data.monitors.bcv.price + data.monitors.enparalelovzla.price) / 2)
     }
     fetchDollar();
   }, [])
