@@ -34,7 +34,7 @@ export default function RoulettePage({ winningNumbers, rouletteCallback }: {
         });
         for (let i = 0; i < 10 - winningNumbers.length; i++) {
 
-            data.push({ option: (Math.floor(Math.random() * 1000) + 100).toString(), style: { backgroundColor: generateRandomColor(), textColor: "black" } })
+            data.push({ option: (Math.floor(Math.random() * 1000) + 1).toString(), style: { backgroundColor: generateRandomColor(), textColor: "black" } })
         }
         setRender(!render)
     }, [data, winningNumbers])
