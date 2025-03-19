@@ -68,7 +68,7 @@ export default function Page() {
     <div className="self-center max-w-[1280] sm:p-5 sm:pt-0 pb-0 ">
       <div className="flex flex-col sm:flex-row items-center py-5 sm:py-0 h-fill w-full ">
         {isSmallScreen ? <div className={`w-auto sm:w-1/2 justify-center items-center relative ${isModalOpen ? "hidden sm:flex" : "flex"}`}>
-          <Image className="select-none" src="/sorteo.png" height={430} width={430} style={{
+          <Image className="select-none" src="/sorteo2.jpg" height={390} width={390} style={{
             objectFit: 'contain',
             padding: 10,
           }} alt="Sorteo ITAT" />
@@ -78,7 +78,7 @@ export default function Page() {
             <h1 className="text-5xl text-center font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#D68A4E] from-40% to-[#FAE6A9] ">Gran Rifa</h1>
             <h2 className="text-3xl text-center text-blue-400">Promo 26</h2>
             {!isSmallScreen ? <div className={`w-auto sm:w-1/2 justify-center items-center relative ${isModalOpen ? "hidden modal-hid" : "flex"}`}>
-              <Image className="select-none" src="/sorteo.png" height={430} width={430} style={{
+              <Image className="select-none" src="/sorteo2.jpg" height={390} width={390} style={{
                 objectFit: 'contain',
                 padding: 10,
               }} alt="Sorteo ITAT" />
