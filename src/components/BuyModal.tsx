@@ -36,7 +36,7 @@ export default function BuyModal({ toggleModal, dollar, available }: {
         }
     }, []);
 
-    const min = 1; const max = 10;
+    const min = 1; const max = 20;
 
     const rouletteCallback = useCallback(() => {
         setShowRoulette(false)
