@@ -2,8 +2,6 @@
 import BuyModal from "@/components/BuyModal";
 import Image from "next/image";
 import { useCallback, useEffect, useState } from "react";
-import PercentageBar from "@/components/PercentageBar";
-
 
 export default function Page() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -33,7 +31,7 @@ export default function Page() {
 
   useEffect(() => {
     async function fetchDollar() {
-      
+
       const res = await fetch('https://ve.dolarapi.com/v1/dolares', {
         method: 'GET',
         headers: {
@@ -41,14 +39,14 @@ export default function Page() {
           'Accept': 'application/json'
         }
       })
-        /*
-      const res = await fetch('https://pydolarve.org/api/v1/dollar?format_date=default&rounded_price=true', {
-        method: 'GET',
-        headers: {
-          'Accept': 'application/json'
-        }
-      })
-      */
+      /*
+    const res = await fetch('https://pydolarve.org/api/v1/dollar?format_date=default&rounded_price=true', {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json'
+      }
+    })
+    */
       const data = await res.json()
       setDollar((data[0].promedio + data[1].promedio) / 2)
     }
@@ -90,12 +88,25 @@ export default function Page() {
               botón de abajo podrá comprar sus números que serán asignados de manera
               aleatoria.</p>
           </div>
+          {/*
           <button onClick={toggleModal}>
             <div className="flex justify-center rounded-md bg-indigo-600 px-5 py-1.5 text-xl/10 font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 select-none">
               Ir a la compra
             </div>
           </button>
+          {
           <PercentageBar data={available} />
+          */}
+          <div className="">
+            <h2 className="text-3xl font-bold text-blue-400">¡Felicidades a los ganadores de la Rifa!</h2>
+            <p className="text-xl">Las compras estarán deshabilitadas hasta la siguiente rifa, muchas gracias por participar.</p>
+            <div className="flex items-center justify-center">
+              <Image className="select-none" src="/ganador.jpg" height={450} width={450} style={{
+                objectFit: 'contain',
+                padding: 10,
+              }} alt="Ganador de sorteo" />
+            </div>
+          </div>
         </div>
         {isModalOpen ? <BuyModal toggleModal={toggleModal} dollar={dollar} available={available?.available} /> : null}
       </div>

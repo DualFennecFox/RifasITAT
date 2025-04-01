@@ -14,6 +14,10 @@ export default function Header() {
                     </div>
                 </Link>
                 <PathLinks />
+
+            </div>
+            <div className="flex flex-row justify-start p-5 px-10 gap-20 relative items-center text-nowrap">
+                <p className="select-text">Diseñado por Gustavo Pérez</p>
             </div>
 
             {/*<div className="flex flex-row justify-end p-5 px-10 gap-20 relative items-center  text-nowrap">
