@@ -3,9 +3,8 @@ import Image from "next/image";
 import PathLinks from "./PathLinks";
 export default function Header() {
 
-
     return (
-        <div className="bg-blue-500 flex flex-row text-white justify-between text-lg select-none">
+        <div className="bg-blue-500 flex flex-row max-h-20 text-white justify-between text-lg select-none">
             <div className="flex flex-row justify-start p-5 px-10 gap-20 relative items-center text-nowrap">
                 <Link href="/">
                     <div className="flex flex-row gap-1">
